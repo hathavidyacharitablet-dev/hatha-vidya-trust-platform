@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -72,12 +71,39 @@
       font-weight: bold;
     }
     nav a:hover { color: #a67d24; }
+    .language-switch {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .language-switch button {
+      border: 1px solid var(--gold);
+      background: white;
+      color: var(--green);
+      border-radius: 5px;
+      padding: 7px 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+    }
+    .language-switch button[aria-pressed="true"] {
+      background: var(--green);
+      color: white;
+    }
+    @media (max-width: 650px) {
+      .language-switch { align-self: flex-start; }
+    }
     .hero {
       padding: 76px 7%;
       color: white;
       text-align: center;
-      background:
-        radial-gradient(ellipse at top, #286b4b 0%, var(--green) 48%, var(--deep) 100%);
+      background: radial-gradient(
+        ellipse at top,
+        #286b4b 0%,
+        var(--green) 48%,
+        var(--deep) 100%
+      );
     }
     .eyebrow {
       color: #f1d58c;
@@ -104,8 +130,14 @@
       font-weight: bold;
       margin: 5px;
     }
-    .btn-gold { background: var(--gold); color: #172d20; }
-    .btn-outline { border: 1px solid #e5d39d; color: white; }
+    .btn-gold {
+      background: var(--gold);
+      color: #172d20;
+    }
+    .btn-outline {
+      border: 1px solid #e5d39d;
+      color: white;
+    }
     section { padding: 58px 6%; }
     .cream { background: var(--cream); }
     .section-title {
@@ -134,7 +166,10 @@
       box-shadow: 0 4px 16px #173d2110;
     }
     .card .symbol { font-size: 32px; }
-    .card h3 { color: var(--green); margin: 8px 0; }
+    .card h3 {
+      color: var(--green);
+      margin: 8px 0;
+    }
     .about {
       max-width: 900px;
       margin: auto;
@@ -163,7 +198,10 @@
     }
     footer p { margin: 6px 0; }
     @media (max-width: 650px) {
-      header { align-items: flex-start; flex-direction: column; }
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
       nav { gap: 10px 15px; }
       .hero { padding: 56px 6%; }
       .hero p { font-size: 15px; }
@@ -173,7 +211,9 @@
   </style>
 </head>
 <body>
-  <div class="topbar">
+  <div class="topbar"
+       data-en="HATHA VIDYA CHARITABLE TRUST · GANDHIDHAM, KUTCH, GUJARAT"
+       data-hi="हठ विद्या चैरिटेबल ट्रस्ट · गांधीधाम, कच्छ, गुजरात">
     HATHA VIDYA CHARITABLE TRUST · GANDHIDHAM, KUTCH, GUJARAT
   </div>
 
@@ -181,126 +221,238 @@
     <a class="brand" href="#home">
       <span class="logo">ॐ</span>
       <span>
-        HATHA VIDYA
-        <small>CHARITABLE TRUST</small>
+        <span data-en="HATHA VIDYA" data-hi="हठ विद्या">HATHA VIDYA</span>
+        <small data-en="CHARITABLE TRUST" data-hi="चैरिटेबल ट्रस्ट">CHARITABLE TRUST</small>
       </span>
     </a>
+
     <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#activities">Activities</a>
-      <a href="#seva">Seva</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" data-en="Home" data-hi="होम">Home</a>
+      <a href="#about" data-en="About" data-hi="हमारे बारे में">About</a>
+      <a href="#activities" data-en="Activities" data-hi="गतिविधियाँ">Activities</a>
+      <a href="#seva" data-en="Seva" data-hi="सेवा">Seva</a>
+      <a href="#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
     </nav>
+
+    <div class="language-switch" aria-label="Choose language">
+      <button type="button" id="lang-hi" aria-pressed="true"
+              onclick="setLanguage('hi')">हिंदी</button>
+      <button type="button" id="lang-en" aria-pressed="false"
+              onclick="setLanguage('en')">English</button>
+    </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="eyebrow">सेवा • संस्कार • जनकल्याण</div>
-      <h1>Compassion in Action,<br>Service for Humanity</h1>
-      <p>
+      <div class="eyebrow"
+           data-en="SERVICE • VALUES • PUBLIC WELFARE"
+           data-hi="सेवा • संस्कार • जनकल्याण">सेवा • संस्कार • जनकल्याण</div>
+
+      <h1 data-en="Compassion in Action,<br>Service for Humanity"
+          data-hi="करुणा से सेवा,<br>मानवता का कल्याण">
+        Compassion in Action,<br>Service for Humanity
+      </h1>
+
+      <p
+        data-en="Hatha Vidya Charitable Trust is dedicated to community welfare, education, Gau Seva and meaningful service inspired by compassion and Indian values."
+        data-hi="हठ विद्या चैरिटेबल ट्रस्ट समाज कल्याण, शिक्षा, गौसेवा और करुणा व भारतीय मूल्यों से प्रेरित सार्थक सेवा के लिए समर्पित है।">
         Hatha Vidya Charitable Trust is dedicated to community
         welfare, education, Gau Seva and meaningful service
         inspired by compassion and Indian values.
       </p>
-      <a class="btn btn-gold" href="#seva">Join Our Seva</a>
-      <a class="btn btn-outline" href="#about">Discover Our Mission</a>
+
+      <a class="btn btn-gold" href="#seva"
+         data-en="Join Our Seva" data-hi="सेवा से जुड़ें">Join Our Seva</a>
+      <a class="btn btn-outline" href="#about"
+         data-en="Discover Our Mission" data-hi="हमारे उद्देश्य को जानें">Discover Our Mission</a>
     </section>
 
     <section id="about" class="cream">
       <div class="about">
-        <h2 class="section-title">About Our Trust</h2>
-        <p>
+        <h2 class="section-title"
+            data-en="About Our Trust"
+            data-hi="हमारे ट्रस्ट के बारे में">About Our Trust</h2>
+
+        <p
+          data-en="Hatha Vidya Charitable Trust, based in Gandhidham, Kutch, Gujarat, is committed to serving society through compassion, responsibility and community participation."
+          data-hi="गांधीधाम, कच्छ, गुजरात स्थित हठ विद्या चैरिटेबल ट्रस्ट करुणा, जिम्मेदारी और सामुदायिक सहभागिता के माध्यम से समाज की सेवा के लिए प्रतिबद्ध है।">
           Hatha Vidya Charitable Trust, based in Gandhidham,
           Kutch, Gujarat, is committed to serving society through
           compassion, responsibility and community participation.
         </p>
-        <p>
+
+        <p
+          data-en="Our aim is to support initiatives that contribute to education, social welfare, health awareness, environmental care and the well-being of living beings."
+          data-hi="हमारा उद्देश्य शिक्षा, सामाजिक कल्याण, स्वास्थ्य जागरूकता, पर्यावरण संरक्षण और सभी जीवों के कल्याण में योगदान देने वाली पहलों का समर्थन करना है।">
           Our aim is to support initiatives that contribute to
           education, social welfare, health awareness, environmental
           care and the well-being of living beings.
         </p>
-        <div class="quote">
+
+        <div class="quote"
+             data-en="Service is dedication — compassion brings positive change to society."
+             data-hi="सेवा ही समर्पण है — करुणा से समाज में सकारात्मक परिवर्तन।">
           सेवा ही समर्पण है — करुणा से समाज में सकारात्मक परिवर्तन।
         </div>
       </div>
     </section>
 
     <section id="activities">
-      <h2 class="section-title">Our Activities</h2>
-      <p class="intro">
-        Working towards a more compassionate, healthy and
-        empowered community.
+      <h2 class="section-title"
+          data-en="Our Activities" data-hi="हमारी गतिविधियाँ">Our Activities</h2>
+
+      <p class="intro"
+         data-en="Working towards a more compassionate, healthy and empowered community."
+         data-hi="अधिक करुणामय, स्वस्थ और सशक्त समाज के निर्माण की दिशा में प्रयास।">
+        Working towards a more compassionate, healthy and empowered community.
       </p>
+
       <div class="grid">
         <article class="card">
           <div class="symbol">🐄</div>
-          <h3>Gau Seva</h3>
-          <p>Supporting cow care and responsible animal welfare initiatives.</p>
+          <h3 data-en="Gau Seva" data-hi="गौसेवा">Gau Seva</h3>
+          <p data-en="Supporting cow care and responsible animal welfare initiatives."
+             data-hi="गौ-देखभाल और जिम्मेदार पशु-कल्याण पहलों को सहयोग देना।">
+            Supporting cow care and responsible animal welfare initiatives.
+          </p>
         </article>
+
         <article class="card">
           <div class="symbol">🍲</div>
-          <h3>Annadan & Seva</h3>
-          <p>Encouraging food service and community support for people in need.</p>
+          <h3 data-en="Annadan & Seva" data-hi="अन्नदान एवं सेवा">Annadan & Seva</h3>
+          <p data-en="Encouraging food service and community support for people in need."
+             data-hi="जरूरतमंद लोगों के लिए अन्नसेवा और सामुदायिक सहयोग को प्रोत्साहित करना।">
+            Encouraging food service and community support for people in need.
+          </p>
         </article>
+
         <article class="card">
           <div class="symbol">📚</div>
-          <h3>Education</h3>
-          <p>Promoting learning opportunities and educational support.</p>
+          <h3 data-en="Education" data-hi="शिक्षा">Education</h3>
+          <p data-en="Promoting learning opportunities and educational support."
+             data-hi="सीखने के अवसरों और शैक्षिक सहयोग को बढ़ावा देना।">
+            Promoting learning opportunities and educational support.
+          </p>
         </article>
+
         <article class="card">
           <div class="symbol">🩺</div>
-          <h3>Health & Welfare</h3>
-          <p>Supporting health awareness and community welfare initiatives.</p>
+          <h3 data-en="Health & Welfare" data-hi="स्वास्थ्य एवं कल्याण">Health & Welfare</h3>
+          <p data-en="Supporting health awareness and community welfare initiatives."
+             data-hi="स्वास्थ्य जागरूकता और सामुदायिक कल्याण की पहलों को सहयोग देना।">
+            Supporting health awareness and community welfare initiatives.
+          </p>
         </article>
+
         <article class="card">
           <div class="symbol">🌱</div>
-          <h3>Environment</h3>
-          <p>Encouraging environmental awareness and care for nature.</p>
+          <h3 data-en="Environment" data-hi="पर्यावरण">Environment</h3>
+          <p data-en="Encouraging environmental awareness and care for nature."
+             data-hi="पर्यावरण जागरूकता और प्रकृति की देखभाल को प्रोत्साहित करना।">
+            Encouraging environmental awareness and care for nature.
+          </p>
         </article>
+
         <article class="card">
           <div class="symbol">🤝</div>
-          <h3>Volunteer Seva</h3>
-          <p>Bringing people together to contribute time, skills and compassion.</p>
+          <h3 data-en="Volunteer Seva" data-hi="स्वयंसेवी सेवा">Volunteer Seva</h3>
+          <p data-en="Bringing people together to contribute time, skills and compassion."
+             data-hi="समय, कौशल और करुणा के साथ सेवा करने के लिए लोगों को एकजुट करना।">
+            Bringing people together to contribute time, skills and compassion.
+          </p>
         </article>
       </div>
     </section>
 
     <section id="seva" class="cream">
       <div class="about">
-        <h2 class="section-title">Be a Part of Seva</h2>
-        <p>
+        <h2 class="section-title"
+            data-en="Be a Part of Seva"
+            data-hi="सेवा का हिस्सा बनें">Be a Part of Seva</h2>
+
+        <p
+          data-en="Every sincere contribution of time, effort and care can help create a positive impact in society. Join us in building a culture of compassion and service."
+          data-hi="समय, प्रयास और देखभाल का हर सच्चा योगदान समाज में सकारात्मक बदलाव ला सकता है। करुणा और सेवा की संस्कृति बनाने में हमारे साथ जुड़ें।">
           Every sincere contribution of time, effort and care
           can help create a positive impact in society.
           Join us in building a culture of compassion and service.
         </p>
-        <a class="btn btn-gold" href="#contact">Volunteer With Us</a>
+
+        <a class="btn btn-gold" href="#contact"
+           data-en="Volunteer With Us"
+           data-hi="हमारे साथ स्वयंसेवा करें">Volunteer With Us</a>
       </div>
     </section>
 
     <section class="contact" id="contact">
-      <h2 class="section-title">Connect With Us</h2>
-      <p>
+      <h2 class="section-title"
+          data-en="Connect With Us" data-hi="हमसे संपर्क करें">Connect With Us</h2>
+
+      <p
+        data-en="Hatha Vidya Charitable Trust<br>Gandhidham, Kutch, Gujarat, India"
+        data-hi="हठ विद्या चैरिटेबल ट्रस्ट<br>गांधीधाम, कच्छ, गुजरात, भारत">
         Hatha Vidya Charitable Trust<br>
         Gandhidham, Kutch, Gujarat, India
       </p>
-      <p>
-        Official contact details and verified registration
-        information will be published here after confirmation.
+
+      <p
+        data-en="Official contact details and verified registration information will be published here after confirmation."
+        data-hi="आधिकारिक संपर्क विवरण और सत्यापित पंजीकरण जानकारी की पुष्टि होने के बाद यहाँ प्रकाशित की जाएगी।">
+        Official contact details and verified registration information
+        will be published here after confirmation.
       </p>
     </section>
   </main>
 
   <footer>
     <p><strong>HATHA VIDYA CHARITABLE TRUST</strong></p>
-    <p>Gandhidham, Kutch, Gujarat, India</p>
-    <p>© <span id="year"></span> Hatha Vidya Charitable Trust. All rights reserved.</p>
-    <p>Privacy Policy · Terms & Conditions · Donation Transparency</p>
+
+    <p data-en="Gandhidham, Kutch, Gujarat, India"
+       data-hi="गांधीधाम, कच्छ, गुजरात, भारत">
+      Gandhidham, Kutch, Gujarat, India
+    </p>
+
+    <p
+      data-en="© <span id='year'></span> Hatha Vidya Charitable Trust. All rights reserved."
+      data-hi="© <span id='year'></span> हठ विद्या चैरिटेबल ट्रस्ट। सर्वाधिकार सुरक्षित।">
+      © <span id="year"></span> Hatha Vidya Charitable Trust. All rights reserved.
+    </p>
+
+    <p
+      data-en="Privacy Policy · Terms & Conditions · Donation Transparency"
+      data-hi="गोपनीयता नीति · नियम एवं शर्तें · दान पारदर्शिता">
+      Privacy Policy · Terms & Conditions · Donation Transparency
+    </p>
   </footer>
 
   <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+
+      document.querySelectorAll("[data-en][data-hi]").forEach(function (element) {
+        element.innerHTML = element.getAttribute("data-" + language);
+      });
+
+      document.getElementById("lang-hi").setAttribute(
+        "aria-pressed",
+        language === "hi" ? "true" : "false"
+      );
+
+      document.getElementById("lang-en").setAttribute(
+        "aria-pressed",
+        language === "en" ? "true" : "false"
+      );
+
+      document.title = language === "hi"
+        ? "हठ विद्या चैरिटेबल ट्रस्ट | गांधीधाम, गुजरात"
+        : "Hatha Vidya Charitable Trust | Gandhidham, Gujarat";
+
+      var year = document.getElementById("year");
+      if (year) year.textContent = new Date().getFullYear();
+    }
+
+    // Hindi is the default language; visitors can switch to English at any time.
+    setLanguage("hi");
   </script>
 </body>
 </html>
